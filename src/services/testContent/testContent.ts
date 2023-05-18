@@ -1,8 +1,9 @@
+import { CheerioAPI } from 'cheerio'
 import { IContent } from '../../interfaces/content'
 import { isWordLengthCorrect } from '../../tests'
 
-export function testContent(content: IContent) {
+export function testContent(content: IContent, $: CheerioAPI) {
     return {
-        isWordLengthCorrect: isWordLengthCorrect(content.content, 300, 100000),
+        isWordLengthCorrect: isWordLengthCorrect($.text(), 300, 100000),
     }
 }
