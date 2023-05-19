@@ -1,6 +1,6 @@
 {
     "name": "seo-content-tester",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Test your title, description and content of your page.",
     "main": "./lib/index.js",
     "files": [
