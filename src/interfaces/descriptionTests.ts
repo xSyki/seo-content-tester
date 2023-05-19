@@ -1,6 +1,5 @@
+import { IIsLengthCorrect } from '../tests/isLengthCorrect'
+
 export interface IDescriptionTests {
-    isLengthCorrect: {
-        passed: boolean
-        length: number
-    }
+    isLengthCorrect: IIsLengthCorrect
 }

@@ -1,27 +1,24 @@
-export interface IIsLengthCorrect {
+import { CheerioAPI } from 'cheerio'
+
+export interface IH1Length {
     passed: boolean
     details: {
         length: number
     }
     reason?: 'too_long' | 'too_short'
     min: number
-    max: number
 }
 
-export function isLengthCorrect(
-    string: string,
-    min: number,
-    max: number
-): IIsLengthCorrect {
-    const isTooLong = string.length > max
-    const isTooShort = string.length < min
-
-    const passed = !isTooLong && !isTooShort
+export function h1Length($: CheerioAPI): IH1Length {
+    const length = $('h1').length
+    const isTooLong = length > 1
+    const isTooShort = length < 1
+    const passed = length > 0 && length < 2
 
     return {
         passed,
         details: {
-            length: string.length,
+            length,
         },
         ...(!passed
             ? {
@@ -32,7 +29,6 @@ export function isLengthCorrect(
                       : undefined,
               }
             : {}),
-        min,
-        max,
+        min: 1,
     }
 }
